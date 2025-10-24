@@ -1,0 +1,5 @@
+{
+  "name": "TWP Toolkit",
+  "description": "A web application for electronics engineers featuring a resistor color code decoder, Ohm's law calculator, and standard capacitor value lookup. Includes a feature to save recent calculations locally.",
+  "requestFramePermissions": []
+}
