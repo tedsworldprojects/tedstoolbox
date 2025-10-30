@@ -6,16 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Electronics Engineer Toolkit</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background: #0f172a; /* bg-slate-900 */
-        background: radial-gradient(ellipse at bottom, #1e293b 0%, #0f172a 100%);
       }
 
       /* Simple scrollbar styling for a more modern look */
@@ -23,14 +18,14 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #0f172a; /* bg-slate-900 */
+        background: #111827; /* bg-gray-900 */
       }
       ::-webkit-scrollbar-thumb {
-        background: #475569; /* bg-slate-600 */
+        background: #4b5563; /* bg-gray-600 */
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #64748b; /* bg-slate-500 */
+        background: #6b7280; /* bg-gray-500 */
       }
       
       /* Add a subtle fade-in animation for components */
@@ -51,10 +46,9 @@
 
       /* Style for the calculated field in Ohm's Law calculator */
       .calculated-field {
-          background-color: #312e81; /* bg-indigo-900 */
-          border-color: #6366f1; /* border-indigo-500 */
-          box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
-          transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          background-color: #0c4a6e; /* bg-cyan-900 */
+          border-color: #22d3ee; /* border-cyan-500 */
+          transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
       }
     </style>
   <script type="importmap">
@@ -72,7 +66,7 @@
 
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-slate-900 text-slate-200">
+  <body class="bg-gray-900 text-gray-100">
     <div id="root"></div>
     <script type="module">
       import React, { useState, useEffect } from 'react';
@@ -208,10 +202,10 @@
 
       // components/Card.tsx
       const Card = ({ title, icon, children }) => {
-        return React.createElement('div', { className: "bg-slate-800/50 border border-slate-700 rounded-2xl shadow-lg flex flex-col backdrop-blur-sm hover:border-slate-600 transition-all duration-300" },
-          React.createElement('div', { className: "p-5 border-b border-slate-700 flex items-center space-x-3" },
-            React.createElement('div', { className: "text-indigo-400" }, icon),
-            React.createElement('h2', { className: "text-xl font-semibold text-slate-100" }, title)
+        return React.createElement('div', { className: "bg-gray-800 border border-gray-700 rounded-xl shadow-lg flex flex-col" },
+          React.createElement('div', { className: "p-5 border-b border-gray-700 flex items-center space-x-3" },
+            React.createElement('div', { className: "text-cyan-400" }, icon),
+            React.createElement('h2', { className: "text-xl font-semibold text-gray-100" }, title)
           ),
           React.createElement('div', { className: "p-5 flex-grow" }, children)
         );
@@ -236,13 +230,13 @@
           setTimeout(() => setIsCopied(false), 2000);
         };
         return React.createElement('div', { className: "mt-4" },
-          React.createElement('label', { className: "block text-sm font-medium text-slate-400 mb-1" }, "Result"),
-          React.createElement('div', { className: "relative bg-slate-900/75 border border-slate-700 rounded-lg p-3 min-h-[6rem]" },
-            React.createElement('pre', { className: "text-green-400 whitespace-pre-wrap text-sm leading-relaxed" }, result),
+          React.createElement('label', { className: "block text-sm font-medium text-gray-400 mb-1" }, "Result"),
+          React.createElement('div', { className: "relative bg-gray-900 border border-gray-600 rounded-lg p-3 min-h-[6rem]" },
+            React.createElement('pre', { className: "text-cyan-300 whitespace-pre-wrap text-sm leading-relaxed" }, result),
             result && React.createElement('div', { className: "absolute top-2 right-2 flex space-x-2" },
               React.createElement('button', {
                   onClick: handleCopy,
-                  className: "p-1.5 text-slate-400 hover:text-white bg-slate-700/50 hover:bg-slate-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500",
+                  className: "p-1.5 text-gray-400 hover:text-white bg-gray-700 hover:bg-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500",
                   title: isCopied ? "Copied!" : "Copy to Clipboard"
                 },
                 React.createElement(ClipboardIcon, { isCopied: isCopied })
@@ -253,8 +247,8 @@
       };
 
       // components/ResistorDecoder.tsx
-      const ResistorIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", strokeWidth: "1.5", stroke: "currentColor" },
-          React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M3 12h3l1.5-4 3 8 3-8 1.5 4h5" })
+      const ResistorIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" },
+          React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M9 4v8l-4 4h14l-4-4V4H9zm-2 0h10" })
       );
       const ResistorDecoder = ({ onSave }) => {
         const [colors, setColors] = useState('brown, black, orange, gold');
@@ -269,19 +263,19 @@
         return React.createElement(Card, { title: "Resistor Color Code Decoder", icon: React.createElement(ResistorIcon, null) },
           React.createElement('div', null,
             React.createElement('div', null,
-              React.createElement('label', { htmlFor: "resistor-colors", className: "block text-sm font-medium text-slate-400" }, "4 or 5 Band Colors"),
-              React.createElement('input', { id: "resistor-colors", type: "text", value: colors, onChange: (e) => setColors(e.target.value), placeholder: "e.g., red, red, orange, gold", className: "mt-1 block w-full bg-slate-700/50 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-slate-100" }),
-              React.createElement('p', { className: "mt-2 text-xs text-slate-500" }, "Separate colors with a comma or space.")
+              React.createElement('label', { htmlFor: "resistor-colors", className: "block text-sm font-medium text-gray-400" }, "4 or 5 Band Colors"),
+              React.createElement('input', { id: "resistor-colors", type: "text", value: colors, onChange: (e) => setColors(e.target.value), placeholder: "e.g., red, red, orange, gold", className: "mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-white" }),
+              React.createElement('p', { className: "mt-2 text-xs text-gray-500" }, "Separate colors with a comma or space.")
             ),
-            React.createElement('button', { onClick: handleDecode, className: "mt-4 w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500 transition-all duration-150" }, "Decode"),
+            React.createElement('button', { onClick: handleDecode, className: "mt-4 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500 transition duration-150" }, "Decode"),
             React.createElement('div', null, React.createElement(ResultDisplay, { result: result }))
           )
         );
       };
 
       // components/OhmsLawCalculator.tsx
-      const OhmsLawIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", strokeWidth: "1.5", stroke: "currentColor" },
-          React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M4 19h5v-1a7 7 0 1 1 6 0v1h5" })
+      const OhmsLawIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" },
+        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M13 10V3L4 14h7v7l9-11h-7z" })
       );
       const OhmsLawCalculator = ({ onSave }) => {
         const [voltage, setVoltage] = useState('');
@@ -348,20 +342,20 @@
         return React.createElement(Card, { title: "Ohm's Law Calculator", icon: React.createElement(OhmsLawIcon, null) },
           React.createElement('div', { className: "space-y-3" },
             React.createElement('div', null,
-              React.createElement('label', { htmlFor: "voltage", className: "block text-sm font-medium text-slate-400" }, "Voltage (V)"),
-              React.createElement('input', { id: "voltage", type: "number", value: voltage, onChange: handleInputChange(setVoltage), placeholder: "e.g., 5", className: `mt-1 block w-full bg-slate-700/50 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-slate-100 ${lastCalculated === 'voltage' ? 'calculated-field' : ''}` })
+              React.createElement('label', { htmlFor: "voltage", className: "block text-sm font-medium text-gray-400" }, "Voltage (V)"),
+              React.createElement('input', { id: "voltage", type: "number", value: voltage, onChange: handleInputChange(setVoltage), placeholder: "e.g., 5", className: `mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-white ${lastCalculated === 'voltage' ? 'calculated-field' : ''}` })
             ),
             React.createElement('div', null,
-              React.createElement('label', { htmlFor: "current", className: "block text-sm font-medium text-slate-400" }, "Current (I) in Amperes"),
-              React.createElement('input', { id: "current", type: "number", value: current, onChange: handleInputChange(setCurrent), placeholder: "e.g., 0.02", className: `mt-1 block w-full bg-slate-700/50 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-slate-100 ${lastCalculated === 'current' ? 'calculated-field' : ''}` })
+              React.createElement('label', { htmlFor: "current", className: "block text-sm font-medium text-gray-400" }, "Current (I) in Amperes"),
+              React.createElement('input', { id: "current", type: "number", value: current, onChange: handleInputChange(setCurrent), placeholder: "e.g., 0.02", className: `mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-white ${lastCalculated === 'current' ? 'calculated-field' : ''}` })
             ),
             React.createElement('div', null,
-              React.createElement('label', { htmlFor: "resistance", className: "block text-sm font-medium text-slate-400" }, "Resistance (R) in Ohms"),
-              React.createElement('input', { id: "resistance", type: "number", value: resistance, onChange: handleInputChange(setResistance), placeholder: "e.g., 1000", className: `mt-1 block w-full bg-slate-700/50 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-slate-100 ${lastCalculated === 'resistance' ? 'calculated-field' : ''}` })
+              React.createElement('label', { htmlFor: "resistance", className: "block text-sm font-medium text-gray-400" }, "Resistance (R) in Ohms"),
+              React.createElement('input', { id: "resistance", type: "number", value: resistance, onChange: handleInputChange(setResistance), placeholder: "e.g., 1000", className: `mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-white ${lastCalculated === 'resistance' ? 'calculated-field' : ''}` })
             ),
             React.createElement('div', { className: "flex space-x-2 pt-2" },
-              React.createElement('button', { onClick: calculate, className: "w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2 px-4 rounded-md transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500" }, "Calculate"),
-              React.createElement('button', { onClick: clearFields, className: "w-full bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-md transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-slate-500" }, "Clear")
+              React.createElement('button', { onClick: calculate, className: "w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-md transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500" }, "Calculate"),
+              React.createElement('button', { onClick: clearFields, className: "w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-gray-500" }, "Clear")
             ),
             error && React.createElement('p', { className: "text-red-400 text-sm mt-2" }, error),
             result && React.createElement(ResultDisplay, { result: result })
@@ -370,10 +364,8 @@
       };
 
       // components/CapacitorLookup.tsx
-      const CapacitorIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", strokeWidth: "1.5", stroke: "currentColor" },
-          React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M3 12h6m4 0h6" }),
-          React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 5v14" }),
-          React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M13 5v14" })
+      const CapacitorIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" },
+        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 5h2v4h-2V7zm0 6h2v2h-2v-2z" })
       );
       const CapacitorLookup = ({ onSave }) => {
         const [value, setValue] = useState('0.1uF');
@@ -388,11 +380,11 @@
         return React.createElement(Card, { title: "Standard Capacitor Value Lookup", icon: React.createElement(CapacitorIcon, null) },
           React.createElement('div', null,
             React.createElement('div', null,
-              React.createElement('label', { htmlFor: "capacitor-value", className: "block text-sm font-medium text-slate-400" }, "Capacitance Value"),
-              React.createElement('input', { id: "capacitor-value", type: "text", value: value, onChange: (e) => setValue(e.target.value), placeholder: "e.g., 4.7nF, 100pF", className: "mt-1 block w-full bg-slate-700/50 border-slate-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-slate-100" }),
-              React.createElement('p', { className: "mt-2 text-xs text-slate-500" }, "Units: pF, nF, uF (or µF).")
+              React.createElement('label', { htmlFor: "capacitor-value", className: "block text-sm font-medium text-gray-400" }, "Capacitance Value"),
+              React.createElement('input', { id: "capacitor-value", type: "text", value: value, onChange: (e) => setValue(e.target.value), placeholder: "e.g., 4.7nF, 100pF", className: "mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm text-white" }),
+              React.createElement('p', { className: "mt-2 text-xs text-gray-500" }, "Units: pF, nF, uF (or µF).")
             ),
-            React.createElement('button', { onClick: handleLookup, className: "mt-4 w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500 transition-all duration-150" }, "Find Closest Value"),
+            React.createElement('button', { onClick: handleLookup, className: "mt-4 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500 transition duration-150" }, "Find Closest Value"),
             React.createElement('div', null, React.createElement(ResultDisplay, { result: result }))
           )
         );
@@ -405,15 +397,15 @@
       const History = ({ history, onClear }) => {
         return React.createElement(Card, { title: "Calculation History", icon: React.createElement(HistoryIcon, null) },
           React.createElement('div', null,
-            history.length > 0 && React.createElement('button', { onClick: onClear, className: "mb-4 w-full text-sm bg-red-900/70 hover:bg-red-800/70 border border-red-800/90 text-white font-bold py-1.5 px-3 rounded-md transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-red-500" }, "Clear History"),
+            history.length > 0 && React.createElement('button', { onClick: onClear, className: "mb-4 w-full text-sm bg-red-800 hover:bg-red-700 text-white font-bold py-1.5 px-3 rounded-md transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-red-500" }, "Clear History"),
             React.createElement('div', { className: "space-y-4" },
               history.length > 0 ?
-              history.map((item) => React.createElement('div', { key: item.id, className: "bg-slate-700/30 p-3 rounded-lg border border-slate-700/50" },
-                  React.createElement('p', { className: "font-semibold text-indigo-400 text-sm" }, item.tool),
-                  React.createElement('p', { className: "text-xs text-slate-400 mt-1" }, "Input: ", React.createElement('span', { className: "text-slate-300" }, item.input)),
-                  React.createElement('p', { className: "text-xs text-slate-400 mt-1" }, "Result: ", React.createElement('span', { className: "text-slate-200 whitespace-pre-wrap" }, item.result))
+              history.map((item) => React.createElement('div', { key: item.id, className: "bg-gray-700/50 p-3 rounded-lg border border-gray-600/50" },
+                  React.createElement('p', { className: "font-semibold text-cyan-400 text-sm" }, item.tool),
+                  React.createElement('p', { className: "text-xs text-gray-400 mt-1" }, "Input: ", React.createElement('span', { className: "text-gray-300" }, item.input)),
+                  React.createElement('p', { className: "text-xs text-gray-400 mt-1" }, "Result: ", React.createElement('span', { className: "text-gray-200 whitespace-pre-wrap" }, item.result))
               )) :
-              React.createElement('div', { className: "flex items-center justify-center h-24 text-center text-slate-500" },
+              React.createElement('div', { className: "flex items-center justify-center h-24 text-center text-gray-500" },
                 React.createElement('p', null, "Your last 5 saved calculations will appear here.")
               )
             )
@@ -436,29 +428,26 @@
         const clearHistory = () => {
           setHistory([]);
         };
-        return React.createElement('div', { className: "min-h-screen font-sans p-6 sm:p-8 lg:p-12" },
-          React.createElement('div', { className: "max-w-6xl mx-auto" },
+        return React.createElement('div', { className: "min-h-screen bg-gray-900 text-gray-100 font-sans p-4 sm:p-6 lg:p-8" },
+          React.createElement('div', { className: "max-w-3xl mx-auto" },
             React.createElement('header', { className: "text-center mb-10" },
-              React.createElement('h1', { 
-                  className: "text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-500 to-fuchsia-500 bg-clip-text text-transparent tracking-tight",
-                  style: { textShadow: '0 0 12px rgba(255, 255, 255, 0.4)' }
-              }, "TEDS WORLD PROJECTS"),
-              React.createElement('p', { className: "mt-2 text-lg text-slate-400" }, "Your essential suite of bench tools!")
+              React.createElement('h1', { className: "text-4xl sm:text-5xl font-bold text-cyan-400 tracking-tight" }, "TEDS WORLD PROJECTS"),
+              React.createElement('p', { className: "mt-2 text-lg text-gray-400" }, "Your essential suite of bench tools!")
             ),
-            React.createElement('main', { className: "grid grid-cols-1 lg:grid-cols-2 gap-8" },
+            React.createElement('main', { className: "flex flex-col space-y-8" },
               React.createElement('div', { className: "card-fade-in", style: { animationDelay: '100ms' } }, React.createElement(ResistorDecoder, { onSave: handleSaveCalculation })),
               React.createElement('div', { className: "card-fade-in", style: { animationDelay: '200ms' } }, React.createElement(OhmsLawCalculator, { onSave: handleSaveCalculation })),
               React.createElement('div', { className: "card-fade-in", style: { animationDelay: '300ms' } }, React.createElement(CapacitorLookup, { onSave: handleSaveCalculation })),
               React.createElement('div', { className: "card-fade-in", style: { animationDelay: '400ms' } }, React.createElement(History, { history: history, onClear: clearHistory }))
             ),
-            React.createElement('footer', { className: "text-center mt-12 text-slate-500 text-sm" },
+            React.createElement('footer', { className: "text-center mt-12 text-gray-500 text-sm" },
               React.createElement('p', null, "2025 Teds World Projects Toolbox v1.1"),
               React.createElement('p', { className: "mt-1" },
                 React.createElement('a', {
                   href: "https://youtube.com/@tedsworldprojects",
                   target: "_blank",
                   rel: "noopener noreferrer",
-                  className: "hover:text-indigo-400 transition-colors"
+                  className: "hover:text-cyan-400 transition-colors"
                 }, "youtube.com/@tedsworldprojects")
               )
             )
